@@ -10,7 +10,7 @@ class Golly < Cask
     version '2.6'
     sha1 '42b90741d0c9c5eb5b816b4391cdcb767dee80fd'
     link 'golly-2.6-mac106/Golly.app'
-    binary 'golly-2.6-mac109/bgolly'
+    binary 'golly-2.6-mac106/bgolly'
   end
   homepage 'http://golly.sourceforge.net/'
   caveats do
