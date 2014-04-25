@@ -39,7 +39,7 @@ Mocha::Integration::MiniTest.activate
 require 'cask'
 
 # look for casks in testcasks by default
-Cask.default_tap = 'phinze-testcasks'
+Cask.default_tap = 'phinze/homebrew-testcasks'
 
 # our own testy caskroom
 Cask.caskroom = HOMEBREW_PREFIX.join('TestCaskroom')
@@ -98,13 +98,13 @@ require 'tempfile'
 
 # pretend like we installed the cask tap
 project_root = Pathname.new(File.expand_path("#{File.dirname(__FILE__)}/../"))
-taps_dest = HOMEBREW_LIBRARY/"Taps"
+taps_dest = HOMEBREW_LIBRARY/"Taps/phinze"
 
 # create directories
-taps_dest.mkdir
+FileUtils.mkdir_p taps_dest
 HOMEBREW_PREFIX.join('bin').mkdir
 
-FileUtils.ln_s project_root, taps_dest/"phinze-cask"
+FileUtils.ln_s project_root, taps_dest/"homebrew-cask"
 
 # Common superclass for tests casks for when we need to filter them out
 class TestCask < Cask; end
@@ -115,4 +115,4 @@ FileUtils.ln_s '/usr/local/bin/unar', HOMEBREW_PREFIX.join('bin/unar')
 FileUtils.ln_s '/usr/local/bin/lsar', HOMEBREW_PREFIX.join('bin/lsar')
 
 # also jack in some test casks
-FileUtils.ln_s project_root/'test'/'support', taps_dest/"phinze-testcasks"
+FileUtils.ln_s project_root/'test'/'support', taps_dest/"homebrew-testcasks"

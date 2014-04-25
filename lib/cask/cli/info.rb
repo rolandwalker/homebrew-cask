@@ -32,8 +32,12 @@ PURPOSE
   def self.github_info(cask)
     tap = cask.title
     tap = cask.class.all_titles.grep(/#{tap}$/).first unless tap =~ /\//
-    tap, name = tap.split "/"
-    user, repo = tap.split "-"
+    user, repo, name = tap.split '/'
+    if name.nil?    # old-style: phinze-cask/name
+      name = repo
+      repo = user.split '-'
+    end
+    repo.sub!(/^homebrew-/i,'')
     "https://github.com/#{user}/homebrew-#{repo}/commits/master/Casks/#{name}.rb"
   end
 
