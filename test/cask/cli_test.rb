@@ -8,7 +8,7 @@ describe Cask::CLI do
       passcod/homebrew-cask/adium
     ]).must_equal(%w[
       google-chrome
-      passcod/cask/adium
+      passcod/homebrew-cask/adium
       phinze/cask/adium
     ])
   end
